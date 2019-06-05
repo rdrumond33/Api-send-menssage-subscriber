@@ -1,0 +1,1 @@
+api_menssager_assinantes
