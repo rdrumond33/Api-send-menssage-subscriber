@@ -3,16 +3,14 @@ import { Sequelize, Model, DataTypes, BuildOptions } from 'sequelize';
 import sequelize from "../database/database";
 
 import {MensagemModel} from './Messagem.model';
+import { AssinanteVip } from './Assinantes.models/AssinanteVip.models';
 
 
 
-export class AssinanteModel extends Model {
-    public Id!: number;
-    public nome!: string;
-  
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
-  }
+export class AssinanteModel extends AssinanteVip {  
+    public Tipo!:Enumerator;
+
+}
 
   AssinanteModel.init({
     id: {
@@ -23,6 +21,17 @@ export class AssinanteModel extends Model {
     nome: {
       type: new DataTypes.STRING(128),
       allowNull: false,
+    },
+    tipo: {
+      type: DataTypes.ENUM("VIP","PREMIUM","FREE"),
+      allowNull: false,
+    },
+    pontuacao: {
+      type: DataTypes.INTEGER,
+      defaultValue:0
+    },
+    DataVidelidade: {
+      type: new DataTypes.STRING(128),
     }
   }, {
     sequelize,
