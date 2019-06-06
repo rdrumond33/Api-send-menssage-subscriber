@@ -1,0 +1,27 @@
+{
+  "name": "api_menssager_assinantes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rdrumond33/api_menssager_assinantes.git",
+  "author": "Rodrigo Drumond de Paula <r-drumond@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.ts",
+    "build": "sucrase ./src -d ./dist --transforms typescript,imports"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.7"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.27",
+    "@types/express": "^4.17.0",
+    "@types/node": "^12.0.5",
+    "@types/validator": "^10.11.0",
+    "nodemon": "^1.19.1",
+    "sucrase": "^3.10.1",
+    "typescript": "^3.5.1"
+  }
+}
