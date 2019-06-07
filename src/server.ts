@@ -5,4 +5,5 @@ async function main() {
     await app.listen();
 }
 
+/** Inicia o servidor */
 main();

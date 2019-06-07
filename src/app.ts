@@ -1,16 +1,20 @@
+/**  */
 import express from 'express';
 
 //** middalewares */
 import morgan from "morgan";
-
+import cors from 'cors';
 /** Rotas */
 import AssinatesRoutes from './routes/assinantes.routes';
+import MenssagemRoutes from './routes/menssagem.routes';
+
 export default class App {
     private app:express.Application;
     
     constructor(private PORT?:Number|String) {
         this.app = express();
-        /** */
+
+        /**  configuracoes iniciais*/
         this.setting();
         this.middalewares();
         this.routers();
@@ -20,16 +24,21 @@ export default class App {
     }
 
     middalewares(){
-        this.app.use(express.json());
+        this.app.use(cors())
         this.app.use(morgan('dev'));
+
+        this.app.use(express.urlencoded({extended:true}));
+        this.app.use(express.json());
     }
 
     routers(){
-        this.app.use(AssinatesRoutes);
+        this.app.use("/Assinante",AssinatesRoutes);
+        this.app.use(MenssagemRoutes);
+
     }
     async listen(){
         await this.app.listen(this.app.get("PORT"),()=>{
-            console.log("Servidor connet na pota : " + this.app.get("PORT"))
+            console.log("Servidor Rodando na pota : " + this.app.get("PORT"))
         })
     }
 }

@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { getAssinantes , createAssinate } from '../controllers/assinante.controller';
+import { getAssinantes , createAssinate ,createMensagem} from '../controllers/assinante.controller';
 
 const router = Router()
 
 router.route("/")
     .get(getAssinantes)
-    .post(createAssinate);
+    .post(createAssinate)
 
 export default router;
