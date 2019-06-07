@@ -11,7 +11,7 @@ export class Assinante extends AssinanteVip {
 
 Assinante.init({
   id: {
-    type: DataTypes.INTEGER.UNSIGNED, // you can omit the `new` but this is discouraged
+    type: DataTypes.INTEGER, // you can omit the `new` but this is discouraged
     autoIncrement: true,
     primaryKey: true,
   },
