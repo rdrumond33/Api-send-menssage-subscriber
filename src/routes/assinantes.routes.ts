@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAssinantes , createAssinate ,createMensagem} from '../controllers/assinante.controller';
+import { getAssinantes , createAssinate ,createMensagem} from '../controllers/assinantes.controller';
 
 const router = Router()
 

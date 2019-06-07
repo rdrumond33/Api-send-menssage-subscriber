@@ -3,13 +3,13 @@ import { Sequelize, Model, DataTypes, BuildOptions } from 'sequelize';
 import sequelize from "../database/database";
 
 import { Menssagem } from './Messagem.model';
-import { AssinanteVip } from './Assinantes.models/AssinanteVip.models';
+import { AssinantesVip } from './Assinantes.models/AssinantesVip.models';
 
-export class Assinante extends AssinanteVip {
-  public Tipo!: Enumerator;
+export class Assinantes extends AssinantesVip {
+  public tipo!: Enumerator;
 }
 
-Assinante.init({
+Assinantes.init({
   id: {
     type: DataTypes.INTEGER, // you can omit the `new` but this is discouraged
     autoIncrement: true,
@@ -30,13 +30,14 @@ Assinante.init({
   raking: {
     type: DataTypes.ENUM('1','2','3','4','5'),
   },
-  DataVidelidade: {
-    type: new DataTypes.STRING(128),
+  data: {
+    type: new DataTypes.DATEONLY,
+    defaultValue : DataTypes.NOW
   }
 }, {
     sequelize,
     tableName: 'assinantes',
   });
 
-Assinante.hasMany(Menssagem)
-Menssagem.belongsTo(Assinante);
+Assinantes.hasMany(Menssagem)
+Menssagem.belongsTo(Assinantes);

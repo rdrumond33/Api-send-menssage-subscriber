@@ -1,16 +1,21 @@
 import { Sequelize } from "sequelize";
-import {Client} from 'pg';
+
+/*
 
 const URI = "postgres://aqbumuordtkrdp:6407a66a52a83abcd2fce84dfa64f162fcbe7f9e4e19ca917881688be2f6d513@ec2-54-83-36-37.compute-1.amazonaws.com:5432/dajbhe6ba7p44d"
-/** localhost 
+
+const sequelize = new Sequelize(URI);
+
+*/
+
 
 const DATA = "db_mensages_assinantes";
-const USERNAME = 'root';
-const PASSWORD = "";
+const USERNAME = 'postgres';
+const PASSWORD = "root";
 
 const sequelize = new Sequelize(DATA, USERNAME, PASSWORD, {
     host: "localhost",
-    dialect: "mysql",
+    dialect: "postgres",
     pool: {
         max: 5,
         min: 0,
@@ -20,19 +25,9 @@ const sequelize = new Sequelize(DATA, USERNAME, PASSWORD, {
     logging: false
 });
 
-*/
 
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: false,
-});
 
-client.connect();
-
-
-const sequelize = new Sequelize(URI);
-
-sequelize.sync({logging:true});
+sequelize.sync();
 
 export default sequelize;
