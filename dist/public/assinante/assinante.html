@@ -46,7 +46,7 @@
 
         $.ajax({
             type: 'GET',
-            url: urlGet + idAssinante,
+            url: urlGet +"Assinantes/" +idAssinante,
             success: function (response) {
                 console.log(response);
                 let textarea = document.getElementsByClassName('textarea');
