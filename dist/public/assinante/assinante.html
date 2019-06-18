@@ -31,7 +31,7 @@
     $(document).ready(function () {
         $.ajax({
             type: 'GET',
-            url: urlGet+'Assinantes',
+            url: urlGet+'/Assinantes',
             dataType: 'json',
             success: function (response) {
                 response.forEach(element => {
@@ -46,7 +46,7 @@
 
         $.ajax({
             type: 'GET',
-            url: `${urlGet}Assinantes/${idAssinante}`,
+            url: `${urlGet}/Assinantes/${idAssinante}`,
             success: function (response) {
                 console.log(response);
                 let textarea = document.getElementsByClassName('textarea');
