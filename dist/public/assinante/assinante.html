@@ -23,11 +23,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-    const urlGet = 'https://apimenssagerassinantes.herokuapp.com/';
+    const urlGet = 'https://apimenssagerassinantes.herokuapp.com';
     
     let url_atual = window.location.href;
     let idAssinante = url_atual.charAt(url_atual.length - 1);
-
+    console.log(idAssinante)
     $(document).ready(function () {
         $.ajax({
             type: 'GET',
@@ -46,11 +46,10 @@
 
         $.ajax({
             type: 'GET',
-            url: urlGet +"Assinantes/" +idAssinante,
+            url: `${urlGet}/Assinantes/${idAssinante}`,
             success: function (response) {
                 console.log(response);
                 let textarea = document.getElementsByClassName('textarea');
-
                 response.forEach(element => {
                     $('h1').append(
                         'Assinante: ' + element.nome + 'Tipo: ' + element.tipo + ' Rank: '
