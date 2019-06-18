@@ -15,6 +15,9 @@ Menssagem.init({
   },
   menssagem: {
     type: DataTypes.TEXT,
+  },
+  AssianenteIDEnvio:{
+    type:DataTypes.INTEGER
   }
 }, {
     sequelize,

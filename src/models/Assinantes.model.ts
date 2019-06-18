@@ -4,10 +4,13 @@ import sequelize from "../database/database";
 
 import { Menssagem } from './Messagem.model';
 import { AssinantesVip } from './Assinantes.models/AssinantesVip.models';
+import { AssinantesFree } from './Assinantes.models/AssinantesFree.model';
+import { AssinantesPremium } from './Assinantes.models/AssinantesPremium.model';
 
 export class Assinantes extends AssinantesVip {
   public tipo!: Enumerator;
 }
+
 
 Assinantes.init({
   id: {

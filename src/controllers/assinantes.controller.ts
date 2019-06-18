@@ -10,35 +10,35 @@ import { Menssagem } from '../models/Messagem.model';
 
 export async function getAssinantes(req: Request, res: Response): Promise<Response> {
 
-    const data:Assinantes[] = await Assinantes.findAll()
+    const data: Assinantes[] = await Assinantes.findAll()
 
     return res.json(data);
 }
 
-export async function createAssinate(req: Request, res: Response): Promise<Response> {
+export async function createAssinate(req: Request, res: Response): Promise<Response> {    
     if (req.body.tipo === "VIP") {
         const AssinateVIP: AssinantesVip = req.body;
         const data = await Assinantes.create(AssinateVIP);
-        return res.json(data);
-
+        res.status(200)
+        return res.json({"status": 200})
     } else if (req.body.tipo === "PREMIUM") {
         const AssinatesPremium: AssinantesPremium = req.body;
         const data = await Assinantes.create(AssinatesPremium);
-        return res.json(data);
-
+        return res.json({"status": 200})
     } else if (req.body.tipo === "FREE") {
         const AssinatesFree: AssinantesFree = req.body;
         const data = await Assinantes.create(AssinatesFree);
-        return res.json(data);
+        return res.json({"status": 200})
     } else {
-        return res.send("Error");
+        return res.json({"status": 400})
+ 
     }
 }
 
 /** funcoes relacionadas a Menssagens */
 
 export async function getMenssagemId(req: Request, res: Response): Promise<Response> {
-    const data = await Menssagem.findAll( { where: { AssinantesId: req.params.id } })
+    const data = await Menssagem.findAll({ where: { AssinanteId: req.params.id } })
     return res.json(data);
 }
 
