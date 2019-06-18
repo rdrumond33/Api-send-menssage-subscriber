@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-
+import * as path from "path";
 import { Assinantes } from '../models/Assinantes.model';
 import { AssinantesVip } from "../models/Assinantes.models/AssinantesVip.models";
 import { AssinantesPremium } from "../models/Assinantes.models/AssinantesPremium.model";
@@ -12,6 +12,11 @@ export async function getAssinantes(req: Request, res: Response): Promise<Respon
 
     const data: Assinantes[] = await Assinantes.findAll()
 
+    return res.json(data);
+}
+
+export async function getAssinanteId(req: Request, res: Response): Promise<Response> {
+    const data = await Assinantes.findAll({ where: { id: req.params.id } });
     return res.json(data);
 }
 
@@ -35,11 +40,15 @@ export async function createAssinate(req: Request, res: Response): Promise<Respo
     }
 }
 
-export async function getAssinantesId(req: Request, res: Response): Promise<Response> {
-    const data = await Assinantes.findAll({ where: { id: req.params.id } })
-    return res.json(data);
-}
+
 /** funcoes relacionadas a Menssagens */
+export async function paginaAssinante(req: Request, res: Response) {
+/*
+ let fileurl=path.resolve(__dirname.replace('controllers','')+'public/assinante/assinante.html');
+  res.sendFile(fileurl);*/
+  
+  return res.redirect('/'+req.params.id)
+}
 
 export async function getMenssagemId(req: Request, res: Response): Promise<Response> {
     const data = await Menssagem.findAll({ where: { AssinanteId: req.params.id } })

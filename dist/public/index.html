@@ -7,43 +7,79 @@
     <title>Document</title>
   </head>
   <body>
-    <form action="" method="get">
-      <select name="select" id="select_1"> </select>
+    <form id="form-enviar">
+      <input type="text" name="nome" id="input_nome" />
+      <select name="tipo" id="select_1">
+        <option value="VIP">VIP</option>
+        <option value="FREE">FREE</option>
+        <option value="PREMIUM">Premium</option>
+      </select>
+      <button type="submit">ENVIAR</button>
+    </form>
+
+    <br />
+    <form action="" method="get" id="form-logar">
+      <select name="select" id="select_2"> </select>
 
       <button type="submit">LOGAR</button>
     </form>
 
-    <script src="jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
+      const urlAssinante = 'https://apimenssagerassinantes.herokuapp.com/';
+
+      /*
+      const urlAssinante = "https://apimenssagerassinantes.herokuapp.com/";
+      */
+
       $(document).ready(function() {
         $.ajax({
           type: 'GET',
-          url: 'http://localhost:3000/Assinante',
+          url: urlAssinante,
           dataType: 'json',
           success: function(response) {
             response.forEach(element => {
-              const selec = document.getElementById('select_1');
+              const selec = document.getElementById('select_2');
               const option = document.createElement('option');
               option.value = element.id;
-              option.text = element.nome + '->' + element.tipo;
+              option.text = element.nome + ' Tipo: ' + element.tipo;
               selec.appendChild(option);
             });
           }
         });
-      });
 
-      $('form').submit(function(e) {
-        var idAssinante = $('#select_1 option:selected').val();
+        $('#form-enviar').submit(function(e) {
+          let data = {
+            nome: $('#input_nome').val(),
+            tipo: $('#select_1 option:selected').val()
+          };
 
-        $.ajax({
-          type: 'GET',
-          url: 'http://localhost:3000/Assinante/' + idAssinante,
-          success: function(response) {
-            window.location.replace('./assinantes/assinanteFree.html');
-          }
+          $.ajax({
+            type: 'POST',
+            url: urlAssinante,
+            data: data,
+            success: function(response) {
+              alert('sucesso ao criar o usuario');
+              location.reload();
+            }
+          });
+          e.preventDefault();
         });
 
-        e.preventDefault();
+        $('#form-logar').submit(function(e) {
+
+          $.ajax({
+            type: 'GET',
+            url: `http://localhost:3000/login/${$('#select_2 option:selected').val()}`,
+            success: function(response) {
+            }
+          });
+          e.preventDefault();
+        });
+
+
+
+
       });
     </script>
   </body>

@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true});
+"use strict"; function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } }Object.defineProperty(exports, "__esModule", {value: true});
 
 var _Assinantesmodel = require('../models/Assinantes.model');
 
@@ -14,6 +14,11 @@ var _Messagemmodel = require('../models/Messagem.model');
 
     return res.json(data);
 } exports.getAssinantes = getAssinantes;
+
+ async function getAssinanteId(req, res) {
+    const data = await _Assinantesmodel.Assinantes.findAll({ where: { id: req.params.id } });
+    return res.json(data);
+} exports.getAssinanteId = getAssinanteId;
 
  async function createAssinate(req, res) {    
     if (req.body.tipo === "VIP") {
@@ -35,11 +40,15 @@ var _Messagemmodel = require('../models/Messagem.model');
     }
 } exports.createAssinate = createAssinate;
 
- async function getAssinantesId(req, res) {
-    const data = await _Assinantesmodel.Assinantes.findAll({ where: { id: req.params.id } })
-    return res.json(data);
-} exports.getAssinantesId = getAssinantesId;
+
 /** funcoes relacionadas a Menssagens */
+ async function paginaAssinante(req, res) {
+/*
+ let fileurl=path.resolve(__dirname.replace('controllers','')+'public/assinante/assinante.html');
+  res.sendFile(fileurl);*/
+  
+  return res.redirect('/'+req.params.id)
+} exports.paginaAssinante = paginaAssinante;
 
  async function getMenssagemId(req, res) {
     const data = await _Messagemmodel.Menssagem.findAll({ where: { AssinanteId: req.params.id } })

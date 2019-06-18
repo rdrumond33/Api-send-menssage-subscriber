@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <form>
+        <select name="select" id="select_1"></select>
+        <textarea name="menssagem" id="menssagem" cols="20" rows="5"></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <span>
+        <textarea name="enviada" id="mensagemEnviada" cols="20" rows="10"></textarea>
+    </span>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    const urlGet = 'https://apimenssagerassinantes.herokuapp.com';
+    
+    let url_atual = window.location.href;
+    let idAssinante = url_atual.charAt(url_atual.length - 1);
+
+    $(document).ready(function () {
+        $.ajax({
+            type: 'GET',
+            url: urlGet,
+            dataType: 'json',
+            success: function (response) {
+                response.forEach(element => {
+                    const selec = document.getElementById('select_1');
+                    const option = document.createElement('option');
+                    option.value = element.id;
+                    option.text = element.nome + ' Tipo: ' + element.tipo;
+                    selec.appendChild(option);
+                });
+            }
+        });
+
+        $.ajax({
+            type: 'GET',
+            url: urlGet + '/' + idAssinante,
+            success: function (response) {
+                console.log(response);
+                let textarea = document.getElementsByClassName('textarea');
+
+                response.forEach(element => {
+                    $('h1').append(
+                        'Assinante: ' + element.nome + 'Tipo: ' + element.tipo + ' Rank: '
+                    );
+
+                    if (element.tipo == 'VIP') {
+                        textarea.item.maxlength = 250;
+                    } else if (element.tipo == 'PREMIUM') {
+                        textarea.item.maxlength = 200;
+                    } else {
+                        textarea.item.maxlength = 10;
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+</html>

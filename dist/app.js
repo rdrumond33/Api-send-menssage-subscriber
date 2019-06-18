@@ -32,9 +32,14 @@ var _path = require('path'); var path = _interopRequireWildcard(_path);
         this.app.use(_express2.default.json());
     }
     routers(){
-        this.app.get('/',(res,req)=>{
+        this.app.get('/',(req,res)=>{
           
-            req.sendFile(path.resolve(__dirname+"/public/index.html"))
+            res.sendFile(path.resolve(__dirname+"/public/index.html"))
+        })
+
+        this.app.get('/login/:id',(req,res)=>{
+          
+            res.sendFile(path.resolve(__dirname+"/public/assinante/assinante.html"))
         })
         
         /** Routas de controllers  */
