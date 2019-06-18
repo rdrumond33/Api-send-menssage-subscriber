@@ -14,7 +14,7 @@ var _AssinantesVipmodels = require('./Assinantes.models/AssinantesVip.models');
 
 Assinantes.init({
   id: {
-    type: _sequelize.DataTypes.INTEGER, // you can omit the `new` but this is discouraged
+    type: _sequelize.DataTypes.INTEGER,
     autoIncrement: true,
     primaryKey: true,
   },

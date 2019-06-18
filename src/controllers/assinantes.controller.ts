@@ -35,6 +35,10 @@ export async function createAssinate(req: Request, res: Response): Promise<Respo
     }
 }
 
+export async function getAssinantesId(req: Request, res: Response): Promise<Response> {
+    const data = await Assinantes.findAll({ where: { id: req.params.id } })
+    return res.json(data);
+}
 /** funcoes relacionadas a Menssagens */
 
 export async function getMenssagemId(req: Request, res: Response): Promise<Response> {

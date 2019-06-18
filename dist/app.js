@@ -1,4 +1,4 @@
-"use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }Object.defineProperty(exports, "__esModule", {value: true});/**  */
+"use strict"; function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }Object.defineProperty(exports, "__esModule", {value: true});/**  */
 var _express = require('express'); var _express2 = _interopRequireDefault(_express);
 
 //** middalewares */
@@ -7,7 +7,8 @@ var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
 /** Rotas */
 var _assinantesroutes = require('./routes/assinantes.routes'); var _assinantesroutes2 = _interopRequireDefault(_assinantesroutes);
 var _menssagemroutes = require('./routes/menssagem.routes'); var _menssagemroutes2 = _interopRequireDefault(_menssagemroutes);
-var _path = require('path'); var _path2 = _interopRequireDefault(_path);
+var _path = require('path'); var path = _interopRequireWildcard(_path);
+
  class App {
     
     
@@ -20,8 +21,6 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
         this.routers();
     }
     setting(){
-        this.app.set('views', _path2.default.join(__dirname, 'public/views'));
-        this.app.set('view engine', 'html');
         this.app.set('PORT',this.PORT|| process.env.PORT||3000)
     }
 
@@ -32,12 +31,14 @@ var _path = require('path'); var _path2 = _interopRequireDefault(_path);
         this.app.use(_express2.default.urlencoded({extended:true}));
         this.app.use(_express2.default.json());
     }
-
     routers(){
         this.app.get('/',(res,req)=>{
-            req.sendFile(__dirname +'/public/views/index.html')
+          
+            req.sendFile(path.resolve(__dirname+"/public/index.html"))
         })
-        this.app.use("/Assinante",_assinantesroutes2.default);
+        
+        /** Routas de controllers  */
+        this.app.use(_assinantesroutes2.default);
         this.app.use(_menssagemroutes2.default);
 
     }

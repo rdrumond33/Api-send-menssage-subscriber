@@ -1,10 +1,11 @@
-import { Router } from 'express';
-import { getAssinantes , createAssinate ,createMensagem} from '../controllers/assinantes.controller';
+import { Router, Response } from 'express';
+import { getAssinantes , createAssinate ,createMensagem,getAssinantesId} from '../controllers/assinantes.controller';
 
 const router = Router()
 
-router.route("/")
-    .get(getAssinantes)
-    .post(createAssinate)
+router.get("/Assinante",getAssinantes)
+router.get("/Assinante/:id",getAssinantesId)
+
+router.post("/Assinante",createAssinate);
 
 export default router;

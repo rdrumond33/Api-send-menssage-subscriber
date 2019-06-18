@@ -35,6 +35,10 @@ var _Messagemmodel = require('../models/Messagem.model');
     }
 } exports.createAssinate = createAssinate;
 
+ async function getAssinantesId(req, res) {
+    const data = await _Assinantesmodel.Assinantes.findAll({ where: { id: req.params.id } })
+    return res.json(data);
+} exports.getAssinantesId = getAssinantesId;
 /** funcoes relacionadas a Menssagens */
 
  async function getMenssagemId(req, res) {

@@ -7,7 +7,8 @@ import cors from 'cors';
 /** Rotas */
 import AssinatesRoutes from './routes/assinantes.routes';
 import MenssagemRoutes from './routes/menssagem.routes';
-import path from "path";
+import * as path from "path";
+
 export default class App {
     private app:express.Application;
     
@@ -20,8 +21,6 @@ export default class App {
         this.routers();
     }
     setting(){
-        this.app.set('views', path.join(__dirname, 'public/views'));
-        this.app.set('view engine', 'html');
         this.app.set('PORT',this.PORT|| process.env.PORT||3000)
     }
 
@@ -32,12 +31,14 @@ export default class App {
         this.app.use(express.urlencoded({extended:true}));
         this.app.use(express.json());
     }
-
     routers(){
         this.app.get('/',(res,req)=>{
-            req.sendFile(__dirname +'/public/views/index.html')
+          
+            req.sendFile(path.resolve(__dirname+"/public/index.html"))
         })
-        this.app.use("/Assinante",AssinatesRoutes);
+        
+        /** Routas de controllers  */
+        this.app.use(AssinatesRoutes);
         this.app.use(MenssagemRoutes);
 
     }
