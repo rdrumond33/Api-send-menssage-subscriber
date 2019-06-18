@@ -3,9 +3,9 @@ import { getAssinantes , createAssinate ,createMensagem,getAssinanteId} from '..
 
 const router = Router()
 
-router.get("/Assinante",getAssinantes)
-router.get("/Assinante/:id",getAssinanteId)
+router.get("/Assinantes",getAssinantes)
+router.get("/Assinantes/:id",getAssinanteId)
 
-router.post("/Assinante",createAssinate);
+router.post("/Assinantes",createAssinate);
 
 export default router;
