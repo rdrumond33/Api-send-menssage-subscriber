@@ -27,7 +27,7 @@
     
     let url_atual = window.location.href;
     let idAssinante = url_atual.charAt(url_atual.length - 1);
-    console.log(idAssinante)
+    console.log(idAssinante);
     $(document).ready(function () {
         $.ajax({
             type: 'GET',
@@ -46,7 +46,7 @@
 
         $.ajax({
             type: 'GET',
-            url: `${urlGet}/Assinantes/${idAssinante}`,
+            url: `${urlGet}Assinantes/${idAssinante}`,
             success: function (response) {
                 console.log(response);
                 let textarea = document.getElementsByClassName('textarea');
