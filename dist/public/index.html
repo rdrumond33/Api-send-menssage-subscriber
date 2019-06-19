@@ -18,7 +18,7 @@
     </form>
 
     <br />
-    <form action="" method="get" id="form-logar">
+    <form action="../assinante/assinante.html" method="submit" id="form-logar">
       <select name="select" id="select_2"> </select>
 
       <button type="submit">LOGAR</button>
@@ -26,7 +26,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-      const urlAssinante = 'https://apimenssagerassinantes.herokuapp.com';
+      const urlAssinante = 'https://apimenssagerassinantes.herokuapp.com/';
 
       /*
       const urlAssinante = "https://apimenssagerassinantes.herokuapp.com/";
@@ -47,7 +47,6 @@
             });
           }
         });
-
 
         $('#form-enviar').submit(function(e) {
           let data = {
