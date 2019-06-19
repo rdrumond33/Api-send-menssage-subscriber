@@ -1,165 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Assinantes</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Assinantes</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-</head>
+  <body>
+    <div class="container">
+      <nav class="nav justify-content-center">
+        <a class="nav-link active" href="/">Voltar</a>
+      </nav>
+      <div class="row">
+        <div class="col">
+          <div class="alert alert-primary" role="alert">
+            <h5></h5>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col ">
+          <form class="form-group" id="form-enviar-menssagem">
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm"
+                  >Menssagem</span
+                >
+              </div>
+              <textarea
+                name="menssagem"
+                id="idMenssagem"
+                cols="40"
+                rows="6"
+                placeholder="Digite a mensagem"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                autofocus
+                autocomplete="false"
+              ></textarea>
+            </div>
+            <br />
+            <div class="input-group input-group-sm">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01"
+                  >Tipo</label
+                >
+              </div>
+              <select class="custom-select" name="select" id="select_1">
+              </select>
 
-<body>
-  <div class="container">
-    <nav class="nav justify-content-center">
-      <a class="nav-link active" href="/">Voltar</a>
-    </nav>
-    <div class="row">
-      <div class="col">
-        <div class="alert alert-primary" role="alert">
-          <h5></h5>
+              <button type="submit">Enviar</button>
+            </div>
+          </form>
+        </div>
+        <div class="col">
+          <textarea
+            name="enviada"
+            id="mensagemEnviada"
+            cols="50"
+            rows="10"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            disabled
+          ></textarea>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col ">
-        <form class="form-group" id="form-enviar-menssagem">
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Menssagem</span>
-            </div>
-            <textarea name="menssagem" id="idMenssagem" cols="40" rows="6" placeholder="Digite a mensagem"
-              aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autofocus
-              autocomplete="false"></textarea>
-          </div>
-          <br />
-          <div class="input-group input-group-sm">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
-            </div>
-            <select class="custom-select" name="select" id="select_1">
-            </select>
+  </body>
 
-            <button type="submit">Enviar</button>
-          </div>
-        </form>
-      </div>
-      <div class="col">
-        <textarea name="enviada" id="mensagemEnviada" cols="50" rows="10" aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm" disabled></textarea>
-      </div>
-    </div>
-  </div>
-</body>
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"
+  ></script>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    const urlGet = 'https://apimenssagerassinantes.herokuapp.com';
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-  //const urlGet = 'https://apimenssagerassinantes.herokuapp.com';
+    //const urlGet = 'http://localhost:3000';
+    let url_atual = window.location.href;
+    let AssinanteId = url_atual.charAt(url_atual.length - 1);
 
-  /** Variaveis*/
-  const urlGet = 'http://localhost:3000';
-  let url_atual = window.location.href;
-  let AssinanteId = url_atual.charAt(url_atual.length - 1);
-  /** */
-
-  $(document).ready(function () {
-    CarregarPagina();
-  });
-
-  function CarregarPagina() {
-    $.ajax({
-      type: 'GET',
-      url: `${urlGet}/Assinantes/${AssinanteId}`,
-      success: function (response) {
-        let textarea = $('#idMenssagem')[0];
-        response.forEach(element => {
-          $('h5').append(
-            ` Assinante ${element.nome} Tipo: ${element.tipo} Raking: ${
-            element.raking
-            }`
-          );
-
-          if (element.tipo == 'VIP') {
-            textarea.setAttribute('maxlength', '200');
-          } else if (element.tipo == 'PREMIUM') {
-            textarea.setAttribute('maxlength', '150');
-          } else {
-            textarea.setAttribute('maxlength', '50');
-          }
-        });
-      }
+    $(document).ready(function() {
+      CarregarPagina();
     });
-    formEnviar();
-    ListarAssinantes();
-    ListarMensagem();
-  }
 
-  function ListarAssinantes() {
-    $.ajax({
-      type: 'GET',
-      url: urlGet + '/Assinantes',
-      dataType: 'json',
-      success: function (response) {
-        response.forEach(element => {
-          const selec = document.getElementById('select_1');
-          const option = document.createElement('option');
-          option.value = element.id;
-          option.text = element.nome + ' Tipo: ' + element.tipo;
-          selec.appendChild(option);
-        });
-      }
-    });
-  }
-
-  function formEnviar() {
-    $('#form-enviar-menssagem').submit(function (e) {
-      let mgs = $('#idMenssagem').val();
-      let url = urlGet + '/' + 'Menssagem/' + AssinanteId;
-
-      let data = {
-        AssinanteId: AssinanteId,
-        menssagem: mgs
-      };
-
+    function CarregarPagina() {
       $.ajax({
-        type: 'POST',
-        url: url,
-        data: data,
-        success: function (response) {
-          console.log(response);
-          $('#idMenssagem').val(' ');
-          $('#mensagemEnviada').append(response.menssagem + '\n');
-        }
-      });
-
-      e.preventDefault();
-    });
-  }
-
-  function ListarMensagem() {
-    $.ajax({
-      type: 'GET',
-      url: `${urlGet}/Menssagem/${AssinanteId}`,
-      success: function (response) {
-        if (response === []) {
-        } else {
+        type: 'GET',
+        url: `${urlGet}/Assinantes/${AssinanteId}`,
+        success: function(response) {
+          let textarea = $('#idMenssagem')[0];
           response.forEach(element => {
-            $('#mensagemEnviada').append(`${element.menssagem}\n`);
+            $('h5').append(
+              ` Assinante ${element.nome} Tipo: ${element.tipo} Raking: ${
+                element.raking
+              }`
+            );
+
+            if (element.tipo == 'VIP') {
+              textarea.setAttribute('maxlength', '200');
+            } else if (element.tipo == 'PREMIUM') {
+              textarea.setAttribute('maxlength', '150');
+            } else {
+              textarea.setAttribute('maxlength', '50');
+            }
           });
         }
-      }
-    });
-  }
-</script>
+      });
+      formEnviar();
+      ListarAssinantes();
+      ListarMensagem();
+    }
 
+    function ListarAssinantes() {
+      $.ajax({
+        type: 'GET',
+        url: urlGet + '/Assinantes',
+        dataType: 'json',
+        success: function(response) {
+          response.forEach(element => {
+            const selec = document.getElementById('select_1');
+            const option = document.createElement('option');
+            option.value = element.id;
+            option.text = element.nome + ' Tipo: ' + element.tipo;
+            selec.appendChild(option);
+          });
+        }
+      });
+    }
+
+    function formEnviar() {
+      $('#form-enviar-menssagem').submit(function(e) {
+        let mgs = $('#idMenssagem').val();
+        let url = urlGet + '/' + 'Menssagem/' + AssinanteId;
+
+        let data = {
+          AssinanteId: AssinanteId,
+          menssagem: mgs
+        };
+
+        $.ajax({
+          type: 'POST',
+          url: url,
+          data: data,
+          success: function(response) {
+            console.log(response);
+            $('#idMenssagem').val(' ');
+            $('#mensagemEnviada').append(response.menssagem + '\n');
+          }
+        });
+
+        e.preventDefault();
+      });
+    }
+
+    function ListarMensagem() {
+      $.ajax({
+        type: 'GET',
+        url: `${urlGet}/Menssagem/${AssinanteId}`,
+        success: function(response) {
+          if (response === []) {
+          } else {
+            response.forEach(element => {
+              $('#mensagemEnviada').append(`${element.menssagem}\n`);
+            });
+          }
+        }
+      });
+    }
+  </script>
 </html>
