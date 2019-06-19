@@ -17,7 +17,7 @@
       <button type="submit">ENVIAR</button>
     </form>
 
-    <br />
+    <br /> /login/1
     <form action="../assinante/assinante.html" method="submit" id="form-logar">
       <select name="select" id="select_2"> </select>
 
@@ -26,7 +26,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
-      const urlAssinante = 'https://apimenssagerassinantes.herokuapp.com/';
+      const urlAssinante = 'https://apimenssagerassinantes.herokuapp.com';
 
       /*
       const urlAssinante = "https://apimenssagerassinantes.herokuapp.com/";
@@ -53,7 +53,6 @@
             nome: $('#input_nome').val(),
             tipo: $('#select_1 option:selected').val()
           };
-
           $.ajax({
             type: 'POST',
             url: urlAssinante+"/Assinantes",
@@ -67,20 +66,12 @@
         });
 
         $('#form-logar').submit(function(e) {
-
-          $.ajax({
-            type: 'GET',
-            url: `http://localhost:3000/login/${$('#select_2 option:selected').val()}`,
-            success: function(response) {
-            }
-          });
-          e.preventDefault();
+          
+          document.getElementById('form-logar').action = urlAssinante+'/login'+$('#select_2 option:selected').val()
+      
         });
-
-
-
-
       });
+
     </script>
   </body>
 </html>
