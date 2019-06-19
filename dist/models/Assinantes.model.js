@@ -5,8 +5,6 @@ var _database = require('../database/database'); var _database2 = _interopRequir
 var _Messagemmodel = require('./Messagem.model');
 var _AssinantesVipmodels = require('./Assinantes.models/AssinantesVip.models');
 
-
-
  class Assinantes extends _AssinantesVipmodels.AssinantesVip {
   
 } exports.Assinantes = Assinantes;
@@ -31,7 +29,8 @@ Assinantes.init({
     defaultValue: 0
   },
   raking: {
-    type: _sequelize.DataTypes.ENUM('1','2','3','4','5'),
+    type: _sequelize.DataTypes.ENUM('Nivel-0','Nivel-1','Nivel-2','Nivel-3','Nivel-4','Nivel-5'),
+    defaultValue:'Nivel-0'
   },
   data: {
     type: new _sequelize.DataTypes.DATEONLY,

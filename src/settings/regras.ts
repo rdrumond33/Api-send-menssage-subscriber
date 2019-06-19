@@ -1,13 +1,26 @@
 class Regras {
-    FREE() {
-        /** nao tem pontos */
+  MenssagemFREE() {
+    /** nao tem pontos */
+  }
+  MenssagemVIP(data: Date) {
+    /** a cada envio de mensagem sera multiplicado pela quantidade de dias  */
+    return data.getDay() * 1.5;
+  }
+  MenssagemPREMIUM() {
+    /** A cada menssagem enviada sera pontuado 5 pontos */
+    return 5;
+  }
+  Ranking(qtdMensagem: Number) {
+    
+    switch (qtdMensagem) {
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+      default:
+        break;
     }
-    VIP(data: Date) {
-        /** a cada envio de mensagem sera multiplicado pela quantidade de dias  */
-        return data.getDay() * 1.5
-    }
-    PREMIUM() {
-        /** A cada menssagem enviada sera pontuado 5 pontos */
-        return 5
-    }
+  }
 }

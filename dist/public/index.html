@@ -1,77 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form id="form-enviar">
-      <input type="text" name="nome" id="input_nome" />
-      <select name="tipo" id="select_1">
-        <option value="VIP">VIP</option>
-        <option value="FREE">FREE</option>
-        <option value="PREMIUM">Premium</option>
-      </select>
-      <button type="submit">ENVIAR</button>
-    </form>
 
-    <br /> 
-    <form id="form-logar">
-      <select name="select" id="select_2"> </select>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Home</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</head>
 
-      <button type="submit">LOGAR</button>
-    </form>
+<body>
+  <div class="container border border-dark" >
+    <nav class="nav justify-content-center">
+      <a class="nav-link active" href="/">HOME</a>
+      <a class="nav-link" href="#">RANK</a>
+    </nav>
+    <div class="row border border-primary" >
+      <div class="col">
+        <form class="form-group was-validated" id="form-enviar">
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Nome</span>
+            </div>
+            <input required autofocus autocomplete="false" type="text" class="form-control" id="input_nome"
+              placeholder="Digite se nome" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+            <div class="invalid-feedback">Gentileza Escre seu nome</div>
+          </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script>
-      const urlAssinante = 'https://apimenssagerassinantes.herokuapp.com';
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Tipo</label>
+            </div>
+            <select class="custom-select" name="tipo" id="select_1" required>
+              <option value="">Qual tipo...</option>
+              <option value="VIP">VIP</option>
+              <option value="FREE">FREE</option>
+              <option value="PREMIUM">Premium</option>
+            </select>
+            <div class="invalid-feedback">Gentileza selecinar um Tipo</div>
+          </div>
+          <button type="submit" class="btn btn-primary">ENVIAR</button>
+        </form>
+      </div>
 
-      /*
-      const urlAssinante = "https://apimenssagerassinantes.herokuapp.com/";
-      */
+      <div class="col">
+        <form class="form-group" id="form-logar">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Assinante</label>
+            </div>
+            <select class="custom-select" name="id" id="select_2">
+              <option value="">Qual Assinante</option>
+            </select>
 
-      $(document).ready(function() {
+          </div>
+
+          <button type="submit" class="btn btn-danger">LOGAR</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    /** Variavel*/
+    //const urlAssinante = 'https://apimenssagerassinantes.herokuapp.com';
+    const urlAssinante = 'http://localhost:3000';
+    /***/
+    $(document).ready(function () {
+      Conficuracao();
+    });
+
+    function Conficuracao() {
+      ListarAssinantes();
+      FormEnviar();
+      FormLogar();
+    }
+
+    function FormEnviar(params) {
+      $('#form-enviar').submit(function (e) {
+        let data = {
+          nome: $('#input_nome').val(),
+          tipo: $('#select_1 option:selected').val()
+        };
         $.ajax({
-          type: 'GET',
-          url: urlAssinante+'/Assinantes',
-          dataType: 'json',
-          success: function(response) {
-            response.forEach(element => {
-              const selec = document.getElementById('select_2');
-              const option = document.createElement('option');
-              option.value = element.id;
-              option.text = element.nome + ' Tipo: ' + element.tipo;
-              selec.appendChild(option);
-            });
+          type: 'POST',
+          url: urlAssinante + '/Assinantes',
+          data: data,
+          success: function (response) {
+            alert('sucesso ao criar o usuario');
+            location.reload();
           }
         });
-
-        $('#form-enviar').submit(function(e) {
-          let data = {
-            nome: $('#input_nome').val(),
-            tipo: $('#select_1 option:selected').val()
-          };
-          $.ajax({
-            type: 'POST',
-            url: urlAssinante+"/Assinantes",
-            data: data,
-            success: function(response) {
-              alert('sucesso ao criar o usuario');
-              location.reload();
-            }
-          });
-          e.preventDefault();
-        });
-
-        $('#form-logar').submit(function(e) {
-          
-          document.getElementById('form-logar').action = urlAssinante+'/login/'+$('#select_2 option:selected').val()
-      
-        });
+        e.preventDefault();
       });
+    }
 
-    </script>
-  </body>
+    function FormLogar() {
+      $('#form-logar').submit(function (e) {
+        document.getElementById('form-logar').action =
+          urlAssinante + '/login/' + $('#select_2 option:selected').val();
+      });
+    }
+
+    function ListarAssinantes() {
+      $.ajax({
+        type: 'GET',
+        url: urlAssinante + '/Assinantes',
+        dataType: 'json',
+        success: function (response) {
+          response.forEach(element => {
+            const selec = document.getElementById('select_2');
+            const option = document.createElement('option');
+            option.value = element.id;
+            option.text = element.nome + ' Tipo: ' + element.tipo;
+            selec.appendChild(option);
+          });
+        }
+      });
+    }
+  </script>
+</body>
+
 </html>

@@ -1,11 +1,9 @@
-import { Sequelize, Model, DataTypes, BuildOptions } from 'sequelize';
+import { DataTypes, ENUM } from 'sequelize';
 
 import sequelize from "../database/database";
 
 import { Menssagem } from './Messagem.model';
 import { AssinantesVip } from './Assinantes.models/AssinantesVip.models';
-import { AssinantesFree } from './Assinantes.models/AssinantesFree.model';
-import { AssinantesPremium } from './Assinantes.models/AssinantesPremium.model';
 
 export class Assinantes extends AssinantesVip {
   public tipo!: Enumerator;
@@ -31,7 +29,8 @@ Assinantes.init({
     defaultValue: 0
   },
   raking: {
-    type: DataTypes.ENUM('1','2','3','4','5'),
+    type: DataTypes.ENUM('Nivel-0','Nivel-1','Nivel-2','Nivel-3','Nivel-4','Nivel-5'),
+    defaultValue:'Nivel-0'
   },
   data: {
     type: new DataTypes.DATEONLY,
