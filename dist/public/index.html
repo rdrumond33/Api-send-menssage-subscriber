@@ -17,8 +17,8 @@
       <button type="submit">ENVIAR</button>
     </form>
 
-    <br /> /login/1
-    <form action="../assinante/assinante.html" method="submit" id="form-logar">
+    <br /> 
+    <form id="form-logar">
       <select name="select" id="select_2"> </select>
 
       <button type="submit">LOGAR</button>
@@ -67,7 +67,7 @@
 
         $('#form-logar').submit(function(e) {
           
-          document.getElementById('form-logar').action = urlAssinante+'/login'+$('#select_2 option:selected').val()
+          document.getElementById('form-logar').action = urlAssinante+'/login/'+$('#select_2 option:selected').val()
       
         });
       });
