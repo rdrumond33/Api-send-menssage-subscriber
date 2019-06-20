@@ -111,7 +111,7 @@ var _Messagemmodel = require('../models/Messagem.model');
       let pontoPremium = _regras2.default.PontuacaoMenssagemPREMIUM();
       ranking = _regras2.default.Ranking(ResData[0].pontuacao.valueOf() + pontoPremium);
 
-      _Assinantesmodel.Assinantes.update({ pontuacao: `${ResData[0].pontuacao.valueOf() + pontoVip}`, raking: ranking }, {
+      _Assinantesmodel.Assinantes.update({ pontuacao: `${ResData[0].pontuacao.valueOf() + pontoPremium}`, raking: ranking }, {
         where: {
           id: ResData[0].id
         }

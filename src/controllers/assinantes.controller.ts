@@ -111,7 +111,7 @@ export async function createMensagem(
       let pontoPremium = regras.PontuacaoMenssagemPREMIUM();
       ranking = regras.Ranking(ResData[0].pontuacao.valueOf() + pontoPremium);
 
-      Assinantes.update({ pontuacao: `${ResData[0].pontuacao.valueOf() + pontoVip}`, raking: ranking }, {
+      Assinantes.update({ pontuacao: `${ResData[0].pontuacao.valueOf() + pontoPremium}`, raking: ranking }, {
         where: {
           id: ResData[0].id
         }
