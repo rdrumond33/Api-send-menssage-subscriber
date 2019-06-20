@@ -89,6 +89,8 @@ export async function createMensagem(
   res: Response
 ): Promise<Response> {
 
+  const menssagem: Menssagem = req.body;
+  const data = await Menssagem.create(menssagem);
 
   let ResData = await Assinantes.findAll({ where: { id: req.body.AssinanteId } })
   let ranking = "";
@@ -126,8 +128,6 @@ export async function createMensagem(
       break;
   }
 
-  const menssagem: Menssagem = req.body;
-  const data = await Menssagem.create(menssagem);
-
+  
   return res.json(data);
 }
