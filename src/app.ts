@@ -36,7 +36,11 @@ export default class App {
           
             res.sendFile(path.resolve(__dirname+"/public/index.html"))
         })
-
+        this.app.get('/ranking',(req,res)=>{
+          
+            res.sendFile(path.resolve(__dirname+"/public/raking/ranking.html"))
+        })
+     
         this.app.get('/login/:id',(req,res)=>{
           
             res.sendFile(path.resolve(__dirname+"/public/assinante/assinante.html"))

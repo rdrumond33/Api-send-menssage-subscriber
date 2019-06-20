@@ -36,7 +36,11 @@ var _path = require('path'); var path = _interopRequireWildcard(_path);
           
             res.sendFile(path.resolve(__dirname+"/public/index.html"))
         })
-
+        this.app.get('/ranking',(req,res)=>{
+          
+            res.sendFile(path.resolve(__dirname+"/public/raking/ranking.html"))
+        })
+     
         this.app.get('/login/:id',(req,res)=>{
           
             res.sendFile(path.resolve(__dirname+"/public/assinante/assinante.html"))

@@ -3,9 +3,9 @@ var _assinantescontroller = require('../controllers/assinantes.controller');
 
 const router = _express.Router.call(void 0, )
 
-router.get("/Assinantes",_assinantescontroller.getAssinantes)
-router.get("/Assinantes/:id",_assinantescontroller.getAssinanteId)
-
-router.post("/Assinantes",_assinantescontroller.createAssinate);
+router.get("/Assinantes", _assinantescontroller.getAssinantes)
+router.get("/Assinantes/:id", _assinantescontroller.getAssinanteId)
+router.get("/AssinantesRanking",_assinantescontroller.getRanking)
+router.post("/Assinantes", _assinantescontroller.createAssinate);
 
 exports. default = router;

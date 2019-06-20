@@ -6,20 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>Home</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
 </head>
 
 <body>
-  <div class="container border border-dark" >
+  <div class="container border border-dark">
     <nav class="nav justify-content-center">
       <a class="nav-link active" href="/">HOME</a>
-      <a class="nav-link" href="#">RANK</a>
+      <a class="nav-link" href="/ranking">RANK</a>
     </nav>
-    <div class="row border border-primary" >
+    <div class="row border border-primary justify-content-center align-items-center">
       <div class="col">
         <form class="form-group was-validated" id="form-enviar">
           <div class="input-group input-group-sm mb-3">
@@ -47,30 +45,30 @@
         </form>
       </div>
 
-      <div class="col">
-        <form class="form-group" id="form-logar">
+      <div class="col ">
+        <form class="form-group" id="idFormLogar">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <label class="input-group-text" for="inputGroupSelect01">Assinante</label>
             </div>
-            <select class="custom-select" name="id" id="select_2">
+            <select class="custom-select" name="id" id="idSelect_2">
               <option value="">Qual Assinante</option>
             </select>
 
           </div>
 
-          <button type="submit" class="btn btn-danger">LOGAR</button>
+          <button id="idLogar" type="submit" class="btn btn-danger">LOGAR</button>
         </form>
       </div>
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
@@ -88,13 +86,14 @@
       FormLogar();
     }
 
+
     function FormEnviar(params) {
       $('#form-enviar').submit(function (e) {
         let data = {
           nome: $('#input_nome').val(),
           tipo: $('#select_1 option:selected').val()
         };
-        $.ajax({
+         $.ajax({
           type: 'POST',
           url: urlAssinante + '/Assinantes',
           data: data,
@@ -108,9 +107,15 @@
     }
 
     function FormLogar() {
-      $('#form-logar').submit(function (e) {
-        document.getElementById('form-logar').action =
-          urlAssinante + '/login/' + $('#select_2 option:selected').val();
+
+      $('#idFormLogar').submit(function (e) {
+
+        if ($('#idSelect_2 option:selected').val() === '') {
+          alert('Gentileza selecionar um assinante')
+        } else {
+          document.getElementById('idFormLogar').action =
+            urlAssinante + '/login/' + $('#idSelect_2 option:selected').val();
+        }
       });
     }
 
@@ -121,7 +126,7 @@
         dataType: 'json',
         success: function (response) {
           response.forEach(element => {
-            const selec = document.getElementById('select_2');
+            const selec = document.getElementById('idSelect_2');
             const option = document.createElement('option');
             option.value = element.id;
             option.text = element.nome + ' Tipo: ' + element.tipo;

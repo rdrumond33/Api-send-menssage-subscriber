@@ -33,7 +33,7 @@ Assinantes.init({
     defaultValue:'Nivel-0'
   },
   data: {
-    type: new _sequelize.DataTypes.DATEONLY,
+    type: new _sequelize.DataTypes.DATE,
     defaultValue : _sequelize.DataTypes.NOW
   }
 }, {

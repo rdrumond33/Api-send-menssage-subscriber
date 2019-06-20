@@ -13,11 +13,15 @@ Menssagem.init({
     autoIncrement: true,
     primaryKey: true,
   },
-  menssagem: {
-    type: _sequelize.DataTypes.TEXT,
-  },
   AssianenteIDEnvio:{
     type:_sequelize.DataTypes.INTEGER
+  },
+  dataEnvio:{
+    type: new _sequelize.DataTypes.DATEONLY,
+    defaultValue : _sequelize.DataTypes.NOW
+  },
+  menssagem: {
+    type: _sequelize.DataTypes.TEXT,
   }
 }, {
     sequelize: _database2.default,

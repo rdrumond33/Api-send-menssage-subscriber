@@ -23,7 +23,6 @@ const sequelize = new Sequelize(DATA, USERNAME, PASSWORD, {
     logging: false
 });
 */
-
 sequelize.sync({force:true});
 
 export default sequelize;

@@ -33,7 +33,7 @@ Assinantes.init({
     defaultValue:'Nivel-0'
   },
   data: {
-    type: new DataTypes.DATEONLY,
+    type: new DataTypes.DATE,
     defaultValue : DataTypes.NOW
   }
 }, {
