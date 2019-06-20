@@ -4,7 +4,6 @@ class Regras {
   }
   PontuacaoMenssagemVIP(dataCadastro: Date) {
     var dateNow = new Date();
-    var date2 = new Date("12/12/2010");
     var timeDiff = Math.abs(dataCadastro.getTime() - dateNow.getTime());
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     /** a cada envio de mensagem sera multiplicado pela quantidade de dias  */
