@@ -4,6 +4,7 @@ import { AssinantesVip } from '../models/Assinantes.models/AssinantesVip.models'
 import { AssinantesPremium } from '../models/Assinantes.models/AssinantesPremium.model';
 import { AssinantesFree } from '../models/Assinantes.models/AssinantesFree.model';
 import regras from '../settings/regras';
+
 /*** Menssagens */
 import { Menssagem } from '../models/Messagem.model';
 
@@ -21,7 +22,8 @@ export async function getRanking(
 ): Promise<Response> {
   const data: Assinantes[] = await Assinantes.findAll({
     order: [
-      ['raking', 'DESC']]
+      ['raking', 'DESC'],
+      ['pontuacao', 'DESC']]
   });
   return res.json(data);
 }
@@ -57,13 +59,6 @@ export async function createAssinate(
 }
 
 /** funcoes relacionadas a Menssagens */
-export async function paginaAssinante(req: Request, res: Response) {
-  /*
- let fileurl=path.resolve(__dirname.replace('controllers','')+'public/assinante/assinante.html');
-  res.sendFile(fileurl);*/
-
-  return res.redirect('/' + req.params.id);
-}
 
 export async function getMenssagemId(
   req: Request,
@@ -74,6 +69,7 @@ export async function getMenssagemId(
   });
   return res.json(data);
 }
+
 export async function getMenssagemRecebidasId(
   req: Request,
   res: Response
@@ -104,8 +100,6 @@ export async function createMensagem(
         where: {
           id: ResData[0].id
         }
-      }).then(() => {
-
       });
 
       break;
@@ -117,9 +111,7 @@ export async function createMensagem(
         where: {
           id: ResData[0].id
         }
-      }).then(() => {
-      });
-
+      })
       break;
     case 'FREE':
       /** nao recebe pontuação */
@@ -127,7 +119,5 @@ export async function createMensagem(
     default:
       break;
   }
-
-  
   return res.json(data);
 }

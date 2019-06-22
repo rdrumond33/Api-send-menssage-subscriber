@@ -4,14 +4,14 @@
   }
   PontuacaoMenssagemVIP(dataCadastro) {
     var dateNow = new Date();
-    var date2 = new Date("12/12/2010");
     var timeDiff = Math.abs(dataCadastro.getTime() - dateNow.getTime());
     var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
     /** a cada envio de mensagem sera multiplicado pela quantidade de dias  */
-    return Math.ceil(diffDays / 10 + 5)
+    return (Math.ceil(diffDays / 100 ) + 5)
   }
   PontuacaoMenssagemPREMIUM() {
-    return 1;
+    // Retorna 2 pontos ;
+    return 2;
   }
   Ranking(pontuacao) {
     if (pontuacao <= 10) return "Nivel-0"

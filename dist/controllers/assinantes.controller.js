@@ -4,6 +4,7 @@ var _Assinantesmodel = require('../models/Assinantes.model');
 
 
 var _regras = require('../settings/regras'); var _regras2 = _interopRequireDefault(_regras);
+
 /*** Menssagens */
 var _Messagemmodel = require('../models/Messagem.model');
 
@@ -21,7 +22,8 @@ var _Messagemmodel = require('../models/Messagem.model');
 ) {
   const data = await _Assinantesmodel.Assinantes.findAll({
     order: [
-      ['raking', 'DESC']]
+      ['raking', 'DESC'],
+      ['pontuacao', 'DESC']]
   });
   return res.json(data);
 } exports.getRanking = getRanking;
@@ -57,13 +59,6 @@ var _Messagemmodel = require('../models/Messagem.model');
 } exports.createAssinate = createAssinate;
 
 /** funcoes relacionadas a Menssagens */
- async function paginaAssinante(req, res) {
-  /*
- let fileurl=path.resolve(__dirname.replace('controllers','')+'public/assinante/assinante.html');
-  res.sendFile(fileurl);*/
-
-  return res.redirect('/' + req.params.id);
-} exports.paginaAssinante = paginaAssinante;
 
  async function getMenssagemId(
   req,
@@ -74,6 +69,7 @@ var _Messagemmodel = require('../models/Messagem.model');
   });
   return res.json(data);
 } exports.getMenssagemId = getMenssagemId;
+
  async function getMenssagemRecebidasId(
   req,
   res
@@ -89,6 +85,8 @@ var _Messagemmodel = require('../models/Messagem.model');
   res
 ) {
 
+  const menssagem = req.body;
+  const data = await _Messagemmodel.Menssagem.create(menssagem);
 
   let ResData = await _Assinantesmodel.Assinantes.findAll({ where: { id: req.body.AssinanteId } })
   let ranking = "";
@@ -102,8 +100,6 @@ var _Messagemmodel = require('../models/Messagem.model');
         where: {
           id: ResData[0].id
         }
-      }).then(() => {
-
       });
 
       break;
@@ -115,9 +111,7 @@ var _Messagemmodel = require('../models/Messagem.model');
         where: {
           id: ResData[0].id
         }
-      }).then(() => {
-      });
-
+      })
       break;
     case 'FREE':
       /** nao recebe pontuação */
@@ -125,9 +119,5 @@ var _Messagemmodel = require('../models/Messagem.model');
     default:
       break;
   }
-
-  const menssagem = req.body;
-  const data = await _Messagemmodel.Menssagem.create(menssagem);
-
   return res.json(data);
 } exports.createMensagem = createMensagem;

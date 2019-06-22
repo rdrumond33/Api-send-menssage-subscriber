@@ -8,32 +8,35 @@
   <title>Assinantes</title>
 
   <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
-  <div class="container">
-    <nav class="nav justify-content-center">
+  <div class="container border border-dark">
+    <nav class="nav justify-content-center align-items-center">
       <a class="nav-link active" href="/">Voltar</a>
     </nav>
-    <div class="row">
-      <div class="col">
+    <div class="row border border-primary justify-content-center align-items-center">
+      <div class=" col col-sm  justify-content-center">
         <div class="alert alert-primary" role="alert">
-          <span id="spanAssinate"></span>
+          <div class="row  justify-content-center"> <span id="spanAssinate"></span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col ">
+    <div class="row border border-primary justify-content-center align-items-center">
+      <div class=" col col-sm justify-content-center">
         <form class="form-group" id="form-enviar-menssagem">
           <div class="input-group input-group-sm">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Menssagem</span>
+              <span class="input-group-text" id="inputGroup-sizing-sm">Menssagem:<span>Caracter:<span
+                    id="idCaracter"></span> </span> </span>
             </div>
-            <textarea name="menssagem" id="idMenssagem" cols="40" rows="6" placeholder="Digite a mensagem"
-              aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" autofocus
-              autocomplete="false"></textarea>
+            <textarea name="menssagem" id="idMenssagem" class="form-control" cols="40" rows="6"
+              placeholder="Digite a mensagem" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm"
+              autofocus autocomplete="false"></textarea>
           </div>
           <br />
           <div class="input-group input-group-sm">
@@ -42,24 +45,34 @@
             </div>
             <select class="custom-select" name="select" id="select_1">
             </select>
-
-            <button type="submit">Enviar</button>
+            <button type="submit" class="btn btn-primary btn-sm">Enviar</button>
           </div>
         </form>
       </div>
-      <div class="col">
-        <textarea name="enviada" id="mensagemEnviada" cols="50" rows="10" aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-sm" disabled></textarea>
+      <div class="col col-sm justify-content-center">
+        <div class="form-group">
+          <label for="">Menssagens:</label>
+
+
+          <textarea name="enviada" id="mensagemEnviada" class="form-control" cols="50" rows="10"
+            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" disabled></textarea>
+        </div>
+
+
       </div>
     </div>
   </div>
 </body>
 
- <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- jquery 3.4.1 -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
@@ -67,7 +80,7 @@
   const urlGet = 'https://apimenssagerassinantes.herokuapp.com';
 
   //const urlGet = 'http://localhost:3000';
-  
+
   let url_atual = window.location.href;
   let AssinanteId = url_atual.charAt(url_atual.length - 1);
 
@@ -99,10 +112,13 @@
 
           if (textarea.getAttribute('maxlength') === null) {
             if (element.tipo == 'VIP') {
+              $('#idCaracter').append('200');
               textarea.setAttribute('maxlength', '200');
             } else if (element.tipo == 'PREMIUM') {
+              $('#idCaracter').append('150');
               textarea.setAttribute('maxlength', '150');
             } else {
+              $('#idCaracter').append('50');
               textarea.setAttribute('maxlength', '50');
             }
           } else {
@@ -111,6 +127,7 @@
       }
     });
   }
+
 
   function ListarAssinantes() {
     $.ajax({
